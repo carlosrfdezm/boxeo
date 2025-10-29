@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
+  <!-- PWA manifest -->
+  <link rel="manifest" href="/manifest.json">
+  <!-- meta theme-color para Android -->
+  <meta name="theme-color" content="#001f3f">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boxeo de Élite | Entrenamiento y Combate</title>
@@ -446,6 +451,14 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
- 
+
+    <!-- registra service worker (coloca antes de cerrar body) -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(function(err){
+        console.warn('SW registro falló:', err);
+      });
+    }
+  </script>
 </body>
 </html>
